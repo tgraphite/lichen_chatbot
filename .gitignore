@@ -1,0 +1,7 @@
+vector_db/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz

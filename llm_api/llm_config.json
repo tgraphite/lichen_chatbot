@@ -1,0 +1,44 @@
+{
+    "autodl": {
+        "key": "123456",
+        "chat_url": "http://localhost:6006/v1/chat/completions",
+        "model": "default_model",
+        "temperature": 0.3,
+        "max_tokens": 4096
+    },
+    "local": {
+        "key": "your_local_key",
+        "chat_url": "http://localhost:11434/api/chat",
+        "model": "qwen2.5:0.5b",
+        "temperature": 0.3,
+        "max_tokens": 4096
+    },
+    "qwen2.5-7b-instruct": {
+        "key": "sk-jezwsedghloykbmyohheidckgiybkzglubelvrqqvwmjkerh",
+        "chat_url": "https://api.siliconflow.cn/v1/chat/completions",
+        "model": "Pro/Qwen/Qwen2.5-7B-Instruct",
+        "temperature": 0.4,
+        "max_tokens": 4096
+    },
+    "qwen2.5-32b-instruct": {
+        "key": "sk-jezwsedghloykbmyohheidckgiybkzglubelvrqqvwmjkerh",
+        "chat_url": "https://api.siliconflow.cn/v1/chat/completions",
+        "model": "Qwen/Qwen2.5-32B-Instruct",
+        "temperature": 0.4,
+        "max_tokens": 4096
+    },
+    "qwq-32b-preview": {
+        "key": "sk-jezwsedghloykbmyohheidckgiybkzglubelvrqqvwmjkerh",
+        "chat_url": "https://api.siliconflow.cn/v1/chat/completions",
+        "model": "Qwen/QwQ-32B-Preview",
+        "temperature": 0.4,
+        "max_tokens": 4096
+    },
+    "deepseek-r1": {
+        "key": "sk-jezwsedghloykbmyohheidckgiybkzglubelvrqqvwmjkerh",
+        "chat_url": "https://api.siliconflow.cn/v1/chat/completions",
+        "model": "Pro/deepseek-ai/DeepSeek-R1",
+        "temperature": 0.3,
+        "max_tokens": 4096
+    }
+}
