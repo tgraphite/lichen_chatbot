@@ -8,9 +8,17 @@ workflow_database_retriver = "7475558441509404723"
 workflow_request_refinement = "7472194940572778522"
 coze_api_key = "pat_EIqiQDu9D4ChGrrBMicYRkq0BHiwRlP9tc8Ndi3M9H5tvZsCQYiuwowzm8Y9VsSH"
 coze_base_url = "https://api.coze.cn/v1/workflow/run"
+record_file = "record.txt"
 
 proxies = {"http": None, "https": None}
 llmcaller = LLMCaller()
+
+
+def write_record(question, answer):
+    with open(record_file, "a") as f:
+        f.write(
+            f"time: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}\nquestion: {question}\n answer: {answer}\n\n"
+        )
 
 
 def call_workflow(workflow_id, question):
@@ -39,21 +47,22 @@ def call_llm(messages):
         system_prompt,
         *messages,
     ]
-    print(f"call_llm: {full_messages}")
-    return llmcaller.completion("qwen2.5-32b-instruct", messages=full_messages)
+    answer = llmcaller.completion("qwen2.5-32b-instruct", messages=full_messages)
+    write_record(messages[-1]["content"], answer)
+    return answer
 
 
 def handle_send(messages):
     question = messages[-1]["content"]
-    print(f"handle_send: {question}")
     output = call_workflow(workflow_test, question)
+    write_record(question, output)
     return output
 
 
 def handle_lookup(messages):
     question = messages[-1]["content"]
-    print(f"handle_lookup: {question}")
     output = call_workflow(workflow_database_retriver, question)
+    write_record(question, output)
     return output
 
 
@@ -66,4 +75,5 @@ def handle_analysis(messages):
         {"role": "user", "content": question},
     ]
     output = llmcaller.completion("qwen2.5-32b-instruct", messages=messages)
+    write_record(question, output)
     return output
